@@ -1,3 +1,9 @@
+import sys
+import os
+
+# Adiciona a pasta raiz do projeto ao caminho do Python
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+
 from Backend.app import app
 
 
