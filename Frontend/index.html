@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>DermAnalytics</title>
+</head>
+<body>
+
+<h2>Cadastro Dermatológico</h2>
+
+<input id="idade" placeholder="Idade"><br>
+<input id="sexo" placeholder="Sexo"><br>
+<input id="lesao" placeholder="Tipo de lesão"><br>
+<input id="regiao" placeholder="Região"><br>
+<input id="data" placeholder="Data"><br>
+
+<button onclick="cadastrar()">Cadastrar</button>
+
+<script>
+function cadastrar() {
+    fetch("http://127.0.0.1:5000/cadastrar", {
+        method: "POST",
+        headers: {"Content-Type": "application/json"},
+        body: JSON.stringify({
+            idade: document.getElementById("idade").value,
+            sexo: document.getElementById("sexo").value,
+            tipo_lesao: document.getElementById("lesao").value,
+            regiao: document.getElementById("regiao").value,
+            data: document.getElementById("data").value
+        })
+    })
+    .then(res => res.json())
+    .then(data => alert(data.mensagem));
+}
+</script>
+
+</body>
+</html>
