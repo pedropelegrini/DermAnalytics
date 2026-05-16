@@ -1,37 +1,45 @@
 <!DOCTYPE html>
-<html>
+<html lang="pt-BR">
 <head>
+    <meta charset="UTF-8">
     <title>DermAnalytics</title>
 </head>
 <body>
 
-<h2>Cadastro Dermatológico</h2>
+<main>
+    <h1>DermAnalytics</h1>
+    <h2>Cadastro Dermatológico</h2>
 
-<input id="idade" placeholder="Idade"><br>
-<input id="sexo" placeholder="Sexo"><br>
-<input id="lesao" placeholder="Tipo de lesão"><br>
-<input id="regiao" placeholder="Região"><br>
-<input id="data" placeholder="Data"><br>
+    <form onsubmit="cadastrar(event)" aria-label="Formulário de cadastro dermatológico">
+        <label for="idade">Idade</label><br>
+        <input id="idade" type="number" min="0" required aria-label="Idade do paciente"><br><br>
 
-<button onclick="cadastrar()">Cadastrar</button>
+        <label for="sexo">Sexo</label><br>
+        <select id="sexo" required aria-label="Sexo do paciente">
+            <option value="">Selecione</option>
+            <option value="Feminino">Feminino</option>
+            <option value="Masculino">Masculino</option>
+            <option value="Outro">Outro</option>
+        </select><br><br>
 
-<script>
-function cadastrar() {
-    fetch("http://127.0.0.1:5000/cadastrar", {
-        method: "POST",
-        headers: {"Content-Type": "application/json"},
-        body: JSON.stringify({
-            idade: document.getElementById("idade").value,
-            sexo: document.getElementById("sexo").value,
-            tipo_lesao: document.getElementById("lesao").value,
-            regiao: document.getElementById("regiao").value,
-            data: document.getElementById("data").value
-        })
-    })
-    .then(res => res.json())
-    .then(data => alert(data.mensagem));
-}
-</script>
+        <label for="lesao">Tipo de lesão</label><br>
+        <input id="lesao" type="text" required aria-label="Tipo de lesão dermatológica"><br><br>
+
+        <label for="regiao">Região do corpo</label><br>
+        <input id="regiao" type="text" required aria-label="Região do corpo"><br><br>
+
+        <label for="data">Data do diagnóstico</label><br>
+        <input id="data" type="date" required aria-label="Data do diagnóstico"><br><br>
+
+        <button type="submit">Cadastrar</button>
+    </form>
+
+    <p>
+        <a href="dashboard.html">Ver dashboard</a>
+    </p>
+</main>
+
+<script src="script.js"></script>
 
 </body>
 </html>

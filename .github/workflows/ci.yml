@@ -24,6 +24,6 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
-      - name: Verificar importação da aplicação
+      - name: Executar testes
         run: |
-          python -c "from Backend.app import app; print('Aplicação Flask carregada com sucesso')"
+          pytest
